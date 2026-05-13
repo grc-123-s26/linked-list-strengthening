@@ -35,7 +35,8 @@ public class Exercises {
      * @return the new head of the linked list
      */
     public static ListNode prepend(ListNode head, int toAdd) {
-        return null;
+        ListNode newHead = new ListNode(toAdd, head);
+        return newHead;
     }
 
     /**
@@ -51,6 +52,7 @@ public class Exercises {
      * @return the head of the list with the last element removed
      */
     public static ListNode removeLast(ListNode head) {
+        
         return null;
     }
 
