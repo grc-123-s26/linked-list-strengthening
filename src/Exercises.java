@@ -82,7 +82,8 @@ public class Exercises {
 
         ListNode current = head; 
         while (current != null) {
-            if (current.data < min)
+            if (current.data < min) min = current.data; 
+            current = current.next;
         }
 
         return min; 
@@ -106,10 +107,20 @@ public class Exercises {
      * @return the head of the list with the first instance of the minimum value removed
      */
     public static ListNode removeMin(ListNode head) {
-        return null;
+        if (head == null || head.next == null) return null;
+
+        int min = min(head); 
+        ListNode current = head; 
+        
+        while (current.next != null) {
+            if (current.next.data == min) current.next = current.next.next;
+            current = current.next;  
+        }
+
+        return head; 
     }
 
-    /* ------ OPTIONAL CHALLENGE PROBLEMS ------ */
+    /* ------   OPTIONAL CHALLENGE PROBLEMS ------ */
 
     /**
      * Returns whether two lists are of equal length AND each value in bigList is double
