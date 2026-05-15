@@ -68,14 +68,12 @@ public class Exercises {
         if (head.next == null) {
             return null;
         }
-        //loop through the list until i find a null
-        //replace the last link with new copy of that link without a next
+        //loop through
         ListNode current = head;
-        while (current.next.next != null) { // a -> b -> null
+        while (current.next.next != null) { //a -> b -> null
             current = current.next;
         }
-        int curInt = current.data; //store my new last of the chain val
-        current = new ListNode(curInt); //replace my current with this new that has no link   
+        current.next = null; //nulling current doesn't work, have to null the thing next to my variable to actually erase it
         return head;
     }
 
