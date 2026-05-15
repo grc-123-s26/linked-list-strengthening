@@ -89,7 +89,18 @@ public class Exercises {
      * @return the minimum value in the list 
      */
     public static int min(ListNode head) {
-        return -1;
+        if (head == null) {
+            return Integer.MAX_VALUE;
+        }
+        ListNode current = head;
+        int val = current.data;
+        while (current.next != null) {
+            current = current.next;
+            if (val > current.data) {
+                val = current.data;
+            }
+        }
+        return val;
     }
 
     /**
@@ -110,7 +121,20 @@ public class Exercises {
      * @return the head of the list with the first instance of the minimum value removed
      */
     public static ListNode removeMin(ListNode head) {
-        return null;
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return null;
+        }
+        //use min to determine what number we are hunting for in the linklist
+        //while loop through the list until we spot the min val
+        //if im conceptualizing this correctly:
+        // we need a - b - c
+        // our b is the low value to get rid of
+        // we then need to connect a - c
+        int low = min(head);
+                
     }
 
     /* ------ OPTIONAL CHALLENGE PROBLEMS ------ */
