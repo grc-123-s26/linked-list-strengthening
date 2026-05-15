@@ -127,29 +127,34 @@ public class Exercises {
         if (head.next == null) {
             return null;
         }
+
         //use min to determine what number we are hunting for in the linklist
         int low = min(head);
+
+        //if the first value is the lowest, then new head become next
+        if (head.data == low) {
+            return head.next;
+        }
+
         //if im conceptualizing this correctly:
-        // we need a - b - c
+        // we need a - b - c (didn't need c)
         ListNode left = head;
         ListNode center = left.next;
-        ListNode right = center.next;
+        // ListNode right = center.next; (didn't need)
 
         //while loop through the list until we spot the min val
-        while (right != null) {
-            if (left.data == low) {
-                head = center; //might need to null the head not change?
-                return head;
-            }
+        while (center != null) { 
+
             if (center.data == low) {
                 //connect left to right
-                left.next = right;
-                return left;                
+                left.next = center.next; //by using nexts we find the thing at the location
+                return head;
             }
             left = left.next; //shift over 1
             center = left.next; //shift based on left
-            right = center.next; //shift based on center
-        }              
+            // right = center.next; //shift based on center (didn't need)
+        }
+        return null;
     }
 
     /* ------ OPTIONAL CHALLENGE PROBLEMS ------ */
