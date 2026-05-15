@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Exercises {
     /**
      * Returns a count of how many nodes are in the linked list.
@@ -60,7 +62,14 @@ public class Exercises {
      * @return the head of the list with the last element removed
      */
     public static ListNode removeLast(ListNode head) {
-        return null;
+        //while loop the linked list until .next is null
+        //change current to null
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current = null;
+        return head; 
     }
 
     /**
