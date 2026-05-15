@@ -41,9 +41,10 @@ public class Exercises {
      * @return the new head of the linked list
      */
     public static ListNode prepend(ListNode head, int toAdd) {
-        //
-
-        return null;
+        //make a new listNode(toAdd, head)
+        //return that list node
+        ListNode returnNode = new ListNode(toAdd, head);
+        return returnNode;
     }
 
     /**
