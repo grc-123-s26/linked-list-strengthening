@@ -128,13 +128,28 @@ public class Exercises {
             return null;
         }
         //use min to determine what number we are hunting for in the linklist
-        //while loop through the list until we spot the min val
+        int low = min(head);
         //if im conceptualizing this correctly:
         // we need a - b - c
-        // our b is the low value to get rid of
-        // we then need to connect a - c
-        int low = min(head);
-                
+        ListNode left = head;
+        ListNode center = left.next;
+        ListNode right = center.next;
+
+        //while loop through the list until we spot the min val
+        while (right != null) {
+            if (left.data == low) {
+                head = center; //might need to null the head not change?
+                return head;
+            }
+            if (center.data == low) {
+                //connect left to right
+                left.next = right;
+                return left;                
+            }
+            left = left.next; //shift over 1
+            center = left.next; //shift based on left
+            right = center.next; //shift based on center
+        }              
     }
 
     /* ------ OPTIONAL CHALLENGE PROBLEMS ------ */
