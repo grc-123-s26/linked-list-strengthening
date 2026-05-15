@@ -62,14 +62,21 @@ public class Exercises {
      * @return the head of the list with the last element removed
      */
     public static ListNode removeLast(ListNode head) {
-        //while loop the linked list until .next is null
-        //change current to null
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return null;
+        }
+        //loop through the list until i find a null
+        //replace the last link with new copy of that link without a next
         ListNode current = head;
-        while (current.next != null) {
+        while (current.next.next != null) { // a -> b -> null
             current = current.next;
         }
-        current = null;
-        return head; 
+        int curInt = current.data; //store my new last of the chain val
+        current = new ListNode(curInt); //replace my current with this new that has no link   
+        return head;
     }
 
     /**
