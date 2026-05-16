@@ -216,7 +216,46 @@ public class Exercises {
      * @return the head of the new list after k rotations to the left
      */
     public static ListNode rotateLeft(ListNode head, int k) {
-        
-        return null;
+        if (head == null) {
+            return null;
+        }
+        ListNode current = head; // 1
+        int len = length(head); // 5
+        int[] array = new int[len]; // [_,_,_,_,_]
+        for (int i = 0; i < len; i++) {
+            array[i] = current.data;
+            current = current.next;                        
+        } // [1,2,3,4,5]
+
+        int kLoop = k;
+        while (kLoop >= len) {
+            kLoop = kLoop - len; //ie if len is 5 and kloop is 5, rotate 0 times, or kloop is 6 and len is 5, rotate 1 time
+        }
+
+        if (kLoop == 0) { //if we're going to rotate 0 times or length number of times, just return the original
+            return head;
+        }
+
+        int[] swapArray = new int[len]; //[_,_,_,_,_]
+        //starting position is index[kloop + i]
+
+        for (int i = 0; i < len - kLoop; i++) { //[_,_,X,_,_]
+            swapArray[i] = array[kLoop + i];
+        } // [3,4,5,_,_]
+        for (int i = 0; i < kLoop; i++) { //[_,_,_,X,_]
+            swapArray[len - kLoop + i] = array[i];
+        } // [_,_,_,1,2]
+
+        //make a new returnvalue to be my new head
+        ListNode returnHead = new ListNode(swapArray[0]);
+        //move current pointer
+        current = returnHead;
+
+        for (int i = 1; i < len; i++) {
+            //make new ListNodes based off of the swapArray
+            current.next = new ListNode(swapArray[i]);
+            current = current.next;
+        }
+        return returnHead;
     }
 }
