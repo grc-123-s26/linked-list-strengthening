@@ -12,7 +12,13 @@ public class Exercises {
      * @return the length of the list
      */
     public static int length(ListNode head) {
-        return -1;
+        ListNode current = head;
+        int count = 0;
+        while(current != null){
+            count++;
+            current = current.next;
+        }
+        return count;
     }
 
     /**
@@ -29,7 +35,8 @@ public class Exercises {
      * @return the new head of the linked list
      */
     public static ListNode prepend(ListNode head, int toAdd) {
-        return null;
+        ListNode newHead = new ListNode(toAdd, head);
+        return newHead;
     }
 
     /**
@@ -45,7 +52,19 @@ public class Exercises {
      * @return the head of the list with the last element removed
      */
     public static ListNode removeLast(ListNode head) {
-        return null;
+        ListNode current = head;
+
+        if(current == null || current.next == null){
+            return null;
+        }
+
+        while (current.next.next != null) {
+            current = current.next;
+        }
+        current.next = current.next.next;
+
+
+        return head;
     }
 
     /**
@@ -60,7 +79,15 @@ public class Exercises {
      * @return the minimum value in the list 
      */
     public static int min(ListNode head) {
-        return -1;
+        int check = Integer.MAX_VALUE;
+        ListNode current = head;
+        while(current != null){
+            if(check > current.data ){
+                check = current.data;
+            }
+            current = current.next;
+        }
+        return check;
     }
 
     /**
@@ -81,6 +108,19 @@ public class Exercises {
      * @return the head of the list with the first instance of the minimum value removed
      */
     public static ListNode removeMin(ListNode head) {
+        if(head != null && head.next != null){
+             ListNode current = head;
+            while(current.next != null){
+                if(min(head) == head.data){
+                    return head.next;
+                }
+                if(min(head) == current.next.data){
+                    current.next = current.next.next;
+                    return head;
+                }
+                current = current.next;
+            }
+        }
         return null;
     }
 
