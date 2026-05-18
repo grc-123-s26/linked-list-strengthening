@@ -110,10 +110,15 @@ public class Exercises {
         if (head == null || head.next == null) return null;
 
         int min = min(head); 
+        if (head.data == min) return head.next; 
+
         ListNode current = head; 
         
         while (current.next != null) {
-            if (current.next.data == min) current.next = current.next.next;
+            if (current.next.data == min) {
+                current.next = current.next.next; 
+                break; 
+            }
             current = current.next;  
         }
 
