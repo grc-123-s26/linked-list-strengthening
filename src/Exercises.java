@@ -116,18 +116,22 @@ public class Exercises {
     public static ListNode removeMin(ListNode head) {
         if(head == null || head.next == null) return null;
         int smallest = min(head);  
+         if (head.data == smallest) {
+        head = head.next;
+        return head;
+    }
+        
+        
         ListNode current = head;
-        //ListNode temp;
+        
         while(current.next!=null){
             if(current.next.data == smallest){
-                ListNode temp = current.next;
                current.next= current.next.next;
-               return temp;
-        
-            }current=current.next;
-            
+               return head;
+            }
+            current=current.next;
         }   
-        return null;
+        return head;
     }
 
     /* ------ OPTIONAL CHALLENGE PROBLEMS ------ */
